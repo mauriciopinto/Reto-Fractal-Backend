@@ -15,7 +15,7 @@ import com.example.RetoFractalBackend.order.errorHandlers.OrderNotFoundException
 
 import org.springframework.web.bind.annotation.RequestBody;
 
-@CrossOrigin (origins = "*")
+@CrossOrigin (origins = "http://34.95.219.44:3000")
 @RestController
 public class OrderController {
     private final OrderRepository repository;
