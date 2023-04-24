@@ -2,6 +2,7 @@ package com.example.RetoFractalBackend.order;
 
 import java.util.List;
 
+import com.example.RetoFractalBackend.order.errorHandlers.OrderNotEditableException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,6 +42,8 @@ public class OrderController {
 
     @PutMapping ("/orders/{id}")
     OrderData replaceOrder (@RequestBody OrderData newOrder, @PathVariable Long id) {
+        if (newOrder.getStatus() == "COMPLETED") throw new OrderNotEditableException (id);
+
         return repository.findById(id).map(order -> {
             order.setOrderNumber(newOrder.getOrderNumber());
             order.setDate(newOrder.getDate());
