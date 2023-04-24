@@ -10,19 +10,20 @@ public class OrderData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderNumber;
     private String date;
     private Long numberOfProducts;
     private Float finalPrice;
+    private String status;
 
     protected OrderData () {}
 
-    public OrderData (Long orderNumber, String date, Long numberOfProducts, Float finalPrice) {
+    public OrderData (Long orderNumber, String date, Long numberOfProducts, Float finalPrice, String status) {
         this.orderNumber = orderNumber;
         this.date = date;
         this.numberOfProducts = numberOfProducts;
         this.finalPrice = finalPrice;
+        this.status = status;
     }
 
     public Long getId () {
@@ -63,5 +64,13 @@ public class OrderData {
 
     public void setFinalPrice (Float newFinalPrice) {
         finalPrice = newFinalPrice;
+    }
+
+    public String getStatus () {
+        return status;
+    }
+
+    public void setStatus (String newStatus) {
+        status = newStatus;
     }
 }

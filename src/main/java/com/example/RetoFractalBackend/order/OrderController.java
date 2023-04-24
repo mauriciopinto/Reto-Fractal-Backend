@@ -46,6 +46,7 @@ public class OrderController {
             order.setDate(newOrder.getDate());
             order.setNumberOfProducs(newOrder.getNumberOfProducts());
             order.setFinalPrice(newOrder.getFinalPrice());
+            order.setStatus(newOrder.getStatus());
             return repository.save(order);
         })
         .orElseGet(() -> {
